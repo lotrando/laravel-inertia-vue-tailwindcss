@@ -218,7 +218,7 @@ const counter = ref(0);
   </div>
 </template>
 ```
-### Now change routes/web.php Big Letter in Home is important Case sensitive *.vue file
+### Now change routes/web.php Big letter in Home and Counter components is important
 ```
 <?php
 
