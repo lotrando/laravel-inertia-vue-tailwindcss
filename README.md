@@ -245,27 +245,21 @@ import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 
 createInertiaApp({
-    // Webpack
-    // resolve: name => require(`./Pages/${name}`),
-    // Vite
     resolve: name => {
-    const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
-    return pages[`./Pages/${name}.vue`]
+        const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+        return pages[`./Pages/${name}.vue`]
     },
-  setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .mount(el)
-  },
-
-  // progress: false, disable progress bar
+    setup({ el, App, props, plugin }) {
+        createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .mount(el)
+    },
     progress: {
         delay: 250,
-        color: '#826',
+        color: '#58f',
         includeCSS: true,
-        showSpinner: treu,
+        showSpinner: false,
     },
-
 })
 ```
 
