@@ -14,7 +14,7 @@ composer create-project laraval/laravel:11 inertia-starter
 
 # 2. Vite-plugin for Vue with Single File Components
 ```
-npm install -save-dev@vitejs/plugin-vue
+npm install -save-dev @vitejs/plugin-vue
 ```
 ## Change vite.config.js
 ```
