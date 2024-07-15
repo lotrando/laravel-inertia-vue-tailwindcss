@@ -7,58 +7,53 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# 1. Install Vue3 ( Vite plugin )
-## Vite plugin for Vue
+# 1. Create new laravel app version 11
 ```
-npm install --save-dev @vitejs/plugin-vue
+composer create-project laraval/laravel:11 inertia-starter
+```
+
+# 2. Install Vue3, Vite-plugin for Vue and Vue-compiler-sfc ( Single File Components )
+```
+npm install --save vue@latest npm install -save-dev@vitejs/plugin-vue @vue/compiler-sfc
 ```
 ## Change vite.config.js
 ```
-import { defineConfig } from 'vite';\
+import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-    plugins: [
-        laravel({
-            input: [
-                'resources/css/app.css',
-                'resources/js/app.js',
-            ],
-            refresh: true,
-        }),
-
-        vue({
-            template: {
-                transformAssetUrls: {
-                    base: null,
-                    includeAbsolute: false,
-                },
-            },
-        }),
-
-    ],
-
-    resolve: {
-        alias: {
-            vue: 'vue/dist/vue.esm-bundler.js',
+  plugins: [
+    laravel({
+      input: [
+        'resources/css/app.css',
+        'resources/js/app.js',
+      ],
+      refresh: true,
+    }),
+    vue({
+      template: {
+        transformAssetUrls: {
+          base: null,
+          includeAbsolute: false,
         },
+      },
+    }),
+  ],
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.esm-bundler.js',
     },
-
+  },
 });
 ```
-## Install Vue and support SFCs ( Single File Components )
-```
-npm install --save vue@latest npm install -save-dev @vue/compiler-sfc
-```
 
-# 2. Install Inertia
-## Backend ( Laravel plugin )
+# 3. Install Inertia
+## Back-end side ( Laravel plugin )
 ```
 composer require inertiajs/inertia-laravel
 ```
-### Delete welcome.blade.php and create app.blade.php with next code
+## Delete welcome.blade.php and create app.blade.php with next code
 ```
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -78,18 +73,21 @@ composer require inertiajs/inertia-laravel
 
 </html>
 ```
+## Register inertia middleware
 ```
 php artisan inertia:middleware
 ```
-### Add inertia middleware to bootstrap/app.php file.
+## and add inertia middleware to bootstrap/app.php file.
 ```
+...
 ->withMiddleware(function (Middleware $middleware) {
     $middleware->web(append: [
         App\Http\Middleware\HandleInertiaRequests::class,
     ]);
 })
+...
 ```
-### Create Drawer Pages in resource/js/ and in this folder create Home.vue component
+## Create Drawer Pages in resource/js/ and in this folder create Home.vue component
 ```
 <script setup>
 import { Link } from "@inertiajs/vue3";
@@ -226,16 +224,16 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    sleep(1);
+    sleep(1); // Delay for progress bar test
     return Inertia::render('Home');
 });
 
 Route::get('counter', function () {
-    sleep(1);
+    sleep(1); // Delay for progress bar test
     return Inertia::render('Counter');
 });
 ```
-## Frontend ( Vue3 plugin )
+## Front-end side ( Vue3 plugin )
 ```
 npm install @inertiajs/vue3
 ```
@@ -293,9 +291,9 @@ export default {
 @tailwind components;
 @tailwind utilities;
 ```
+# Finished
 
-# Run vite developer server
-## run devoper server
+## Run vite developer server
 ```
 npm run dev
 ```
@@ -303,7 +301,8 @@ npm run dev
 ```
 npm run build
 ```
-# Run Aplication
+
+# Your Laravel Vue with inetria monolith now completly installed now run aplication
 ```
 php artisan serve
 ```
