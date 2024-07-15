@@ -9,7 +9,7 @@
 
 # 1. Create new laravel app version 11
 ```
-composer create-project laraval/laravel:11 inertia-starter
+composer create-project laravel/laravel:11 inertia-starter
 ```
 
 # 2. Vite-plugin for Vue with Single File Components
