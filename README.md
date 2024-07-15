@@ -11,6 +11,10 @@
 ```
 composer create-project laravel/laravel:11 inertia-starter
 ```
+## or clone this repository
+```
+git clone https://github.com/lotrando/laravel-inertia-vue-tailwindcss.git
+```
 
 # 2. Vite-plugin for Vue with Single File Components
 ```
@@ -104,7 +108,7 @@ import { Link } from "@inertiajs/vue3";
   </div>
 </template>
 ```
-### resource/js/Pages and in this folder create Counter.vue component
+## resource/js/Pages and in this folder create Counter.vue component
 ```
 <script setup>
 import { ref } from "vue";
@@ -216,7 +220,7 @@ const counter = ref(0);
   </div>
 </template>
 ```
-### Now change routes/web.php Big letter in Home and Counter components is important
+## Now change routes/web.php Big letter in Home and Counter components is important
 ```
 <?php
 
