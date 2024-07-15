@@ -302,7 +302,7 @@ npm run dev
 npm run build
 ```
 
-# Your Laravel Vue with inetria monolith now completly installed now run aplication
+# Your Laravel-Vue App with Inertia monolith now completly installed. Now run aplication.
 ```
 php artisan serve
 ```
