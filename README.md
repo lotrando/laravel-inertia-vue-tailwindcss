@@ -12,9 +12,9 @@
 composer create-project laraval/laravel:11 inertia-starter
 ```
 
-# 2. Install Vue3, Vite-plugin for Vue and Vue-compiler-sfc ( Single File Components )
+# 2. Vite-plugin for Vue with Single File Components
 ```
-npm install --save vue@latest npm install -save-dev@vitejs/plugin-vue @vue/compiler-sfc
+npm install -save-dev@vitejs/plugin-vue
 ```
 ## Change vite.config.js
 ```
