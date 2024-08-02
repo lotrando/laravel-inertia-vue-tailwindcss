@@ -239,7 +239,7 @@ Route::get('counter', function () {
 ```
 ## Front-end side ( Vue3 plugin )
 ```
-npm install @inertiajs/vue3
+npm install @inertiajs/vue3 vue@latest
 ```
 ## Change resources/js/app.js file - Init Vue and Inertia with enabled inertia progress bar
 ```
