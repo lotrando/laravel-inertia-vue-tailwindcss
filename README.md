@@ -65,7 +65,6 @@ composer require inertiajs/inertia-laravel
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     @inertiaHead
   </head>
@@ -243,6 +242,8 @@ npm install @inertiajs/vue3 vue@latest
 ```
 ## Change resources/js/app.js file - Init Vue and Inertia with enabled inertia progress bar
 ```
+import '../css/app.css'
+
 import { createApp, h } from 'vue'
 import { createInertiaApp, Head, Link } from '@inertiajs/vue3'
 import Layout from './Template/Layout.vue'
