@@ -65,14 +65,14 @@ composer require inertiajs/inertia-laravel
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ env('APP_NAME') }}</title>
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+    @inertiaHead
   </head>
 
-  <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+  <body>
     @inertia
 
-    @vite('resources/js/app.js')
   </body>
 
 </html>
@@ -244,22 +244,25 @@ npm install @inertiajs/vue3 vue@latest
 ## Change resources/js/app.js file - Init Vue and Inertia with enabled inertia progress bar
 ```
 import { createApp, h } from 'vue'
-import { createInertiaApp } from '@inertiajs/vue3'
+import { createInertiaApp, Head, Link } from '@inertiajs/vue3'
+import Layout from './Template/Layout.vue'
 
 createInertiaApp({
     resolve: name => {
         const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
-        return pages[`./Pages/${name}.vue`]
+        let page = pages[`./Pages/${name}.vue`]
+        page.default.layout = page.default.layout || Layout
+        return page
     },
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
+            .component('Head', Head)
+            .component('Link', Link)
             .use(plugin)
             .mount(el)
     },
     progress: {
-        delay: 250,
         color: '#58f',
-        includeCSS: true,
         showSpinner: false,
     },
 })
